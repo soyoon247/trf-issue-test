@@ -56,3 +56,23 @@ output "request_templates_status_200" {
     "application/json" = "{\"statusCode\": 200}"
   }
 }
+
+output "option_method_response_parameters" {
+  value = {
+    "method.response.header.Access-Control-Allow-Headers" = "false"
+    "method.response.header.Access-Control-Allow-Methods" = "false"
+    "method.response.header.Access-Control-Allow-Origin"  = "false"
+  }
+}
+
+output "all_methods" {
+  value = "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+}
+
+output "all_headers" {
+  value = "'*'"
+}
+
+output "all_origin" {
+  value = "'*'"
+}

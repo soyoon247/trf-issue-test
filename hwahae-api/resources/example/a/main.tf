@@ -1,6 +1,6 @@
 module "a_resources" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "0.0.1"
+  version     = "1.0.0"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "a"
@@ -18,4 +18,10 @@ module "a_resources" {
       integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/products/util/compare3"
     }
   }
+}
+
+module "d" {
+  source    = "./d"
+  parent_id = module.a_resources.resource_id
+  args      = var.args
 }

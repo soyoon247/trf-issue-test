@@ -1,0 +1,23 @@
+module "register-confirm_resources" {
+  source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
+  version     = "1.0.0"
+  rest_api_id = var.args.rest_api_id
+  parent_id   = var.parent_id
+  path_part   = "register-confirm"
+
+  method_values = {
+    POST = {
+      method_request_parameters = {
+        "method.request.header.hwahae-app-version" = "false"
+        "method.request.header.hwahae-platform"    = "false"
+      }
+
+      integration_request_parameters = {
+        "integration.request.header.hwahae-app-version" = "method.request.header.hwahae-app-version"
+        "integration.request.header.hwahae-platform"    = "method.request.header.hwahae-platform"
+      }
+      integration_type = var.args.integration_type.HTTP
+      integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/users/register-confirm"
+    }
+  }
+}

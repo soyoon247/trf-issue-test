@@ -1,14 +1,14 @@
 module "c_resources" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "0.0.1"
+  version     = "1.0.0"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "c"
 
-#  common_values = {
-#    authorization = var.args.authorization.CUSTOM
-#    authorizer_id = var.args.hwahae_authorizer_id_map.default
-#  }
+  common_values = {
+    authorization = var.args.authorization.CUSTOM
+    authorizer_id = var.args.hwahae_authorizer_id_map.default
+  }
 
   method_values = {
     GET = {

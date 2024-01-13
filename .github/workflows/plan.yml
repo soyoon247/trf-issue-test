@@ -5,6 +5,8 @@ on:
     paths:
       - 'hwahae-api/**'
   pull_request:
+    paths:
+      - 'hwahae-api/**'
 
 jobs:
   check-plan-target:
@@ -73,6 +75,7 @@ jobs:
       if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+      continue-on-error: true
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
@@ -126,3 +129,4 @@ jobs:
               body: output
             })
           }
+
