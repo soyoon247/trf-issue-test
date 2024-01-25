@@ -54,3 +54,9 @@ module "send-change-login-type-email" {
   parent_id = module.auth_resources.resource_id
   args      = var.args
 }
+
+module "token" {
+  source    = "./token"
+  parent_id = module.auth_resources.resource_id
+  args      = var.args
+}
