@@ -9,7 +9,7 @@ module "similar-color-products_resources" {
     GET = {
       method_response_map = {
         200 = {
-          response_models = var.args.response_models_empty
+          response_models = var.args.empty_response_models
           response_parameters = {
             "method.response.header.Access-Control-Allow-Origin" = "false"
           }
@@ -18,7 +18,7 @@ module "similar-color-products_resources" {
       integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/makeup/pigment-images/similar-color-products"
       integration_response_map = {
         200 = {
-          response_models = var.args.response_models_empty
+          response_models = var.args.empty_response_models
           response_parameters = {
             "method.response.header.Access-Control-Allow-Origin" = var.args.all_origin
           }

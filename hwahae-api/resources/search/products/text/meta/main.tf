@@ -9,7 +9,7 @@ module "meta_resources" {
     GET = {
       method_response_map = {
         200 = {
-          response_models = var.args.response_models_empty
+          response_models = var.args.empty_response_models
         }
       }
       integration_uri = "http://$${stageVariables.HWAHAE_SEARCH_SERVER}/$${stageVariables.HWAHAE_SEARCH_SERVER_VERSION}/product/meta"

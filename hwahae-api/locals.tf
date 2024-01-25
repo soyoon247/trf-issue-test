@@ -7,10 +7,6 @@ data "aws_api_gateway_rest_api" "hwahae_api" {
   name = "Hwahae API"
 }
 
-data "aws_api_gateway_authorizers" "hwahae_authorizers" {
-  rest_api_id = data.aws_api_gateway_rest_api.hwahae_api.id
-}
-
 locals {
   args = merge(
     module.common,
@@ -18,7 +14,8 @@ locals {
       rest_api_id      = data.aws_api_gateway_rest_api.hwahae_api.id
       root_resource_id = data.aws_api_gateway_rest_api.hwahae_api.root_resource_id
       hwahae_authorizer_id_map = {
-        default = data.aws_api_gateway_authorizers.hwahae_authorizers.ids[0]
+        hwahae_authorizer      = "ltd1vj"
+        hwahae_auth_authorizer = "tv0y4v"
       }
     }
   )

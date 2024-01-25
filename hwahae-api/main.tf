@@ -27,7 +27,7 @@ module "hwahae-rest-api-resources" {
   source     = "./resources"
   args       = local.args
   parent_id  = data.aws_api_gateway_rest_api.hwahae_api.root_resource_id
-  depends_on = [data.aws_api_gateway_rest_api.hwahae_api, data.aws_api_gateway_authorizers.hwahae_authorizers]
+  depends_on = [data.aws_api_gateway_rest_api.hwahae_api]
 }
 
 # aws_api_gateway_deployment 리소스 추가

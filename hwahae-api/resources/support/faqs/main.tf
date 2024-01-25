@@ -8,7 +8,7 @@ module "faqs_resources" {
   method_values = {
     GET = {
       method_response_map = {
-        200 = { response_models = var.args.response_models_empty }
+        200 = { response_models = var.args.empty_response_models }
       }
       integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/support/faqs"
     }

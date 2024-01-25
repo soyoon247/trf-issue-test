@@ -7,18 +7,6 @@ output "authorization" {
   }
 }
 
-output "http_method" {
-  value = {
-    GET     = "GET",
-    POST    = "POST",
-    PUT     = "PUT",
-    DELETE  = "DELETE",
-    PATCH   = "PATCH",
-    OPTIONS = "OPTIONS",
-    HEAD    = "HEAD",
-    ANY     = "ANY"
-  }
-}
 
 output "integration_type" {
   value = {
@@ -45,13 +33,13 @@ output "passthrough_behavior" {
   }
 }
 
-output "response_models_empty" {
+output "empty_response_models" {
   value = {
     "application/json" = "Empty"
   }
 }
 
-output "request_templates_status_200" {
+output "status_200_request_templates" {
   value = {
     "application/json" = "{\"statusCode\": 200}"
   }
