@@ -19,7 +19,7 @@ jobs:
       id: check-branch
       run: |
         echo "IS_MAIN_BRANCH=false" >> $GITHUB_OUTPUT
-        if [ "${{ github.ref }}" == "refs/heads/main_test" ]; then
+        if [ "${{ github.ref }}" == "refs/heads/main" ]; then
           echo "IS_MAIN_BRANCH=true" >> $GITHUB_OUTPUT
         fi
     - name: Check PR exists

@@ -2,7 +2,7 @@ name: Run terraform apply
 
 on:
   pull_request:
-    branches: [main_test]
+    branches: [main]
     types: [closed]
     paths:
       - 'hwahae-api/**'
@@ -15,7 +15,8 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-
+    concurrency:
+      group: terraform-apply
     if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v3
