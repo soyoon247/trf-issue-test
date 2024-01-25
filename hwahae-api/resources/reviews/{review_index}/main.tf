@@ -6,7 +6,7 @@ module "review_index_resources" {
   path_part   = "{review_index}"
   common_values = {
     authorization = var.args.authorization.CUSTOM
-    authorizer_id = var.args.hwahae_authorizer_id_map.default
+    authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
   }
   method_values = {
     DELETE = {
@@ -14,7 +14,7 @@ module "review_index_resources" {
         "method.request.path.review_index" = "true"
       }
       method_response_map = {
-        200 = { response_models = var.args.response_models_empty }
+        200 = { response_models = var.args.empty_response_models }
       }
       integration_request_parameters = {
         "integration.request.path.review_index" = "method.request.path.review_index"
@@ -77,7 +77,7 @@ module "review_index_resources" {
       }
       method_response_map = {
         200 = {
-          response_models = var.args.response_models_empty
+          response_models = var.args.empty_response_models
         }
       }
       integration_request_parameters = {

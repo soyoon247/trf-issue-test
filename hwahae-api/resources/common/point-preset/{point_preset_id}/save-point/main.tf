@@ -8,13 +8,13 @@ module "save-point_resources" {
   method_values = {
     POST = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.default
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_request_parameters = {
         "method.request.path.point_preset_id" = "true"
       }
       method_response_map = {
         200 = {
-          response_models = var.args.response_models_empty
+          response_models = var.args.empty_response_models
           response_parameters = {
             "method.response.header.Access-Control-Allow-Origin" = "false"
           }

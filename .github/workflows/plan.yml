@@ -69,12 +69,24 @@ jobs:
 
     - name: Terraform Plan
       id: plan
-      run: cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -no-color
+      run: |
+        PLAN=$(cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -no-color)
+
+        regex='Terraform will perform the following actions:(.*)'
+        if [[ $PLAN =~ $regex ]]; then
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "EXTRACTED_PLAN<<$EOF" >> $GITHUB_OUTPUT
+          echo "${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+        else
+          echo "EXTRACTED_PLAN=No actions specified in the plan." >> $GITHUB_OUTPUT
+        fi
 
     - uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
       env:
-        PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+        PLAN: "${{ steps.plan.outputs.EXTRACTED_PLAN }}"
+
       continue-on-error: true
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}

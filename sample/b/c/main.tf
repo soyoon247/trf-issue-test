@@ -7,7 +7,7 @@ module "c_resources" {
 
   common_values = {
     authorization = var.args.authorization.CUSTOM
-    authorizer_id = var.args.hwahae_authorizer_id_map.default
+    authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
   }
 
   method_values = {

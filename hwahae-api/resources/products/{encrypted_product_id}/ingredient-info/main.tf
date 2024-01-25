@@ -8,7 +8,7 @@ module "ingredient-info_resources" {
   method_values = {
     GET = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.default
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_request_parameters = {
         "method.request.path.encrypted_product_id" = "true"
       }

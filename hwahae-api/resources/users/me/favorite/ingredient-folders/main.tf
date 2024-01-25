@@ -8,7 +8,7 @@ module "ingredient-folders_resources" {
   method_values = {
     GET = {
       method_response_map = {
-        200 = { response_models = var.args.response_models_empty }
+        200 = { response_models = var.args.empty_response_models }
       }
       integration_type = var.args.integration_type.HTTP
       integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/users/me/favorite/ingredient-folders"

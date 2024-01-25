@@ -9,7 +9,7 @@ module "presigned-urls_resources" {
     POST = {
       method_response_map = {
         200 = {
-          response_models = var.args.response_models_empty
+          response_models = var.args.empty_response_models
         }
       }
 
