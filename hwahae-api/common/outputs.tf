@@ -61,6 +61,10 @@ output "all_headers" {
   value = "'*'"
 }
 
+output "cors_allowed_headers" {
+    value = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,Hwahae-User-Id,Hwahae-Device-Id,Hwahae-Platform,Hwahae-App-Version,Hwahae-Device-Scale,Hwahae-Timestamp,Hwahae-Signature,User-Agent'"
+}
+
 output "all_origin" {
   value = "'*'"
 }
