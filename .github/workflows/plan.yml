@@ -1,9 +1,6 @@
 name: Run terraform plan
 
 on:
-  push:
-    paths:
-      - 'hwahae-api/**'
   pull_request:
     paths:
       - 'hwahae-api/**'
