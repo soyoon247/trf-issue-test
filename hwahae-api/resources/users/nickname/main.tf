@@ -20,7 +20,7 @@ module "nickname_resources" {
       integration_response_map = {
         200 = {
           response_parameters = {
-            "method.response.header.Access-Control-Allow-Headers" = var.args.cors_allowed_headers
+            "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,Hwahae-User-Id,Hwahae-Device-Id,Hwahae-Platform,Hwahae-App-Version,Hwahae-Device-Scale,Hwahae-Timestamp,Hwahae-Signature,User-Agent'"
             "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS'"
             "method.response.header.Access-Control-Allow-Origin"  = var.args.all_origin
           }
