@@ -68,4 +68,3 @@ output "cors_allowed_headers" {
 output "all_origin" {
   value = "'*'"
 }
-

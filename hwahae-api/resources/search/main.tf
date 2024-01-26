@@ -48,3 +48,9 @@ module "products" {
   parent_id = module.search_resources.resource_id
   args      = var.args
 }
+
+module "reviews" {
+  source    = "./reviews"
+  parent_id = module.search_resources.resource_id
+  args      = var.args
+}
