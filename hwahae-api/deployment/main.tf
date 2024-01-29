@@ -15,3 +15,12 @@ resource "aws_api_gateway_deployment" "release_1_1" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_1_2" {
+  rest_api_id = var.rest_api_id
+  description = "1.2 - 테스트 a/d/g 리소스 추가"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
