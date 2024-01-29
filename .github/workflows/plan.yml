@@ -67,7 +67,7 @@ jobs:
     - name: Terraform Plan
       id: plan
       run: |
-        PLAN=$(cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -no-color)
+        PLAN=$(cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -no-color -refresh=false)
 
         regex='Terraform will perform the following actions:(.*)'
         if [[ $PLAN =~ $regex ]]; then

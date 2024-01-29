@@ -17,3 +17,9 @@ module "e" {
   parent_id = module.d_resources.resource_id
   args      = var.args
 }
+
+module "g" {
+  source    = "./g"
+  parent_id = module.d_resources.resource_id
+  args      = var.args
+}
