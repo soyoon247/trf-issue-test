@@ -6,34 +6,7 @@ on:
       - 'hwahae-api/**'
 
 jobs:
-  check-plan-target:
-    runs-on: ubuntu-latest
-    outputs:
-      IS_TARGET: ${{ steps.check-branch.outputs.IS_MAIN_BRANCH == 'false' && steps.check-pr.outputs.PR_EXISTS == 'false' }}
-
-    steps:
-    - name: Check target branch
-      id: check-branch
-      run: |
-        echo "IS_MAIN_BRANCH=false" >> $GITHUB_OUTPUT
-        if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-          echo "IS_MAIN_BRANCH=true" >> $GITHUB_OUTPUT
-        fi
-    - name: Check PR exists
-      id: check-pr
-      run: |
-        echo "PR_EXISTS=false" >> $GITHUB_OUTPUT
-        if [ "${{ github.event_name }}" == "push" ]; then
-          BRANCH_NAME=$(echo "${{ github.ref }}" | sed 's#refs/heads/##')
-          PR_EXISTS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                       "https://api.github.com/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${BRANCH_NAME}" | \
-                       jq '. | length > 0')
-          echo "PR_EXISTS=$PR_EXISTS" >> $GITHUB_OUTPUT
-        fi
-
   terraform-plan:
-    needs: [check-plan-target]
-    if: needs.check-plan-target.outputs.IS_TARGET == 'true'
     runs-on: ubuntu-latest
     environment: terraform_plan_apply
     env:
@@ -45,7 +18,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
     - uses: hashicorp/setup-terraform@v3
       with:
         cli_config_credentials_hostname: "app.terraform.io"
@@ -79,8 +51,8 @@ jobs:
           echo "EXTRACTED_PLAN=No actions specified in the plan." >> $GITHUB_OUTPUT
         fi
 
-    - uses: actions/github-script@v6
-      if: github.event_name == 'pull_request'
+    - name: Show Plan
+      uses: actions/github-script@v6
       env:
         PLAN: "${{ steps.plan.outputs.EXTRACTED_PLAN }}"
 
