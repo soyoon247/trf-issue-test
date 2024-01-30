@@ -6,8 +6,8 @@ module "example_resources" {
   path_part   = "example"
 }
 
-module "b" {
-  source    = "./b"
+module "a" {
+  source    = "./a"
   parent_id = module.example_resources.resource_id
   args      = var.args
 }
