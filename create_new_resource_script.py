@@ -1,14 +1,12 @@
 """
 api gateway 배포를 위해 필요한 파일 및 내용들을 자동 생성해줍니다.
 
-ex) python create_new_resource_script.py --path users/favorite/brands --description "/users/favorite/brands 리소스 추가"
+ex) python create_new_resource_script.py --path users/favorite/brands
 
-1. endpoint path에 해당하는 디렉토리에 main.tf, variables.tf를 생성합니다.
-    - main.tf는 샘플 내용이 작성되어 생성됩니다. 추가하고자 하는 내용을 넣어서 사용하세요.
-    - variables.tf 는 수정하지 않아도 됩니다.
-    - main.tf 생성시 parent_path에서 생성한 모듈을 호출합니다.
-2. aws_api_gateway_deployment 리소스를 생성합니다.
-    주의) 리소스를 생성할 때마다 버저닝이 새롭게 생성되니 적절히 통합해 주세요!
+- endpoint path에 해당하는 디렉토리에 main.tf, variables.tf를 생성합니다.
+- main.tf는 샘플 내용이 작성되어 생성됩니다. 추가하고자 하는 내용을 넣어서 사용하세요.
+- variables.tf 는 수정하지 않아도 됩니다.
+- main.tf 생성시 parent_path에서 생성한 모듈을 호출합니다.
 """
 import argparse
 import os
@@ -23,7 +21,7 @@ REGEX = re.compile("{?([^+]*)\+?}?")
 MAIN_TEMPLATE = Template(
     """module "${resource_name}" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "1.0.0"
+  version     = "1.0.4"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "${current_path_part}"
@@ -40,7 +38,7 @@ MAIN_TEMPLATE = Template(
 PARENT_MAIN_TEMPLATE = Template(
     """module "${resource_name}" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "1.0.0"
+  version     = "1.0.4"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "${current_path_part}"
@@ -54,19 +52,6 @@ module "${module_name}" {
   source    = "./${source}"
   parent_id = module.${parent_resource_name}.resource_id
   args      = var.args
-}
-"""
-)
-
-DEPLOYMENT_TEMPLATE = Template(
-    """
-resource "aws_api_gateway_deployment" "${new_version_str}" {
-  rest_api_id = var.rest_api_id
-  description = "${new_version} - ${description}"
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 """
 )
@@ -143,37 +128,6 @@ def add_module_in_parent_path_main_tf(
         )
 
 
-def update_deployment(deployment_path: str, description: str):
-    """
-    deployment 업데이트
-
-    :param deployment_path: deployment 파일 경로
-    :param description: 배포 설명
-    """
-    with open(deployment_path, "r") as f:
-        pattern = r"description\s*=\s*\"(\d+\.\d+)"
-        deployment_descriptions = re.findall(pattern, f.read())
-
-        if deployment_descriptions:
-            version = deployment_descriptions[-1]
-            major, always = tuple(map(int, version.split(".")))
-            always += 1  # 버전을 하나 올림
-            new_version = f"{major}.{always}"
-            print(f"create new version: {new_version}")
-        else:
-            print("Can not find version resources!!")
-            return
-
-    with open(deployment_path, "a") as f:
-        f.write(
-            DEPLOYMENT_TEMPLATE.substitute(
-                new_version=new_version,
-                new_version_str=f"version_{new_version.replace('.', '_')}",
-                description=description,
-            )
-        )
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="api gateway 배포를 위해 필요한 파일 및 내용들을 자동 생성해줍니다."
@@ -181,14 +135,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--path", type=str, help="api path를 입력하세요. ex) users/favorite/brands"
     )
-    parser.add_argument(
-        "--description",
-        type=str,
-        help="배포시 남길 설명을 입력하세요. ex) users/favorite/brands 리소스 추가",
-    )
     args = parser.parse_args()
     target_path = args.path
-    deploy_description = args.description
     path_parts = target_path.split("/")
 
     # main.tf 파일이 존재하는지 확인
@@ -205,13 +153,8 @@ if __name__ == "__main__":
         current_making_path = f"{CURRENT_PATH}{RESOURCE_DIR_PATH}{dynamic_path}"
         is_last_path = idx == path_depth - 1
 
-        # 1. 새로운 리소스 생성
         create_new_resource(
             current_path=current_making_path,
             current_path_part=path_part,
             _is_last_path=is_last_path,
         )
-
-    # 2. deployment 생성
-    deployment_file_path = f"{CURRENT_PATH}/hwahae-api/deployment/main.tf"
-    update_deployment(deployment_file_path, deploy_description)
