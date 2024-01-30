@@ -16,12 +16,12 @@ from string import Template
 
 CURRENT_PATH = os.getcwd()
 RESOURCE_DIR_PATH = "/hwahae-api/resources"
-REGEX = re.compile("{?([^+]*)\+?}?")
+REGEX = re.compile("{([^+]*)\+?}")
 # 참고: https://docs.python.org/3/library/string.html#template-strings
 MAIN_TEMPLATE = Template(
     """module "${resource_name}" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "1.0.4"
+  version     = "1.0.6"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "${current_path_part}"
@@ -38,7 +38,7 @@ MAIN_TEMPLATE = Template(
 PARENT_MAIN_TEMPLATE = Template(
     """module "${resource_name}" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "1.0.4"
+  version     = "1.0.6"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "${current_path_part}"
@@ -60,6 +60,7 @@ module "${module_name}" {
 def create_new_resource(
     current_path: str,
     current_path_part: str,
+    dynamic_path: str,
     _is_last_path: bool,
 ):
     """
@@ -128,17 +129,8 @@ def add_module_in_parent_path_main_tf(
         )
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="api gateway 배포를 위해 필요한 파일 및 내용들을 자동 생성해줍니다."
-    )
-    parser.add_argument(
-        "--path", type=str, help="api path를 입력하세요. ex) users/favorite/brands"
-    )
-    args = parser.parse_args()
-    target_path = args.path
+def create_resources(target_path: str):
     path_parts = target_path.split("/")
-
     # main.tf 파일이 존재하는지 확인
     if os.path.isfile(f"{CURRENT_PATH}/hwahae-api/resources/{target_path}/main.tf"):
         print(f"Resource already exists! Just update {target_path}/main.tf")
@@ -156,5 +148,18 @@ if __name__ == "__main__":
         create_new_resource(
             current_path=current_making_path,
             current_path_part=path_part,
+            dynamic_path=dynamic_path,
             _is_last_path=is_last_path,
         )
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="api gateway 배포를 위해 필요한 파일 및 내용들을 자동 생성해줍니다."
+    )
+    parser.add_argument(
+        "--path", type=str, help="api path를 입력하세요. ex) users/favorite/brands"
+    )
+
+    args = parser.parse_args()
+    create_resources(args.path)
