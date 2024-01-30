@@ -1,9 +1,3 @@
-module "example" {
-  source    = "./example"
-  parent_id = var.parent_id
-  args      = var.args
-}
-
 module "ad-serving" {
   source    = "./ad-serving"
   parent_id = var.parent_id

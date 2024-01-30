@@ -24,3 +24,12 @@ resource "aws_api_gateway_deployment" "release_1_2" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_1_3" {
+  rest_api_id = var.rest_api_id
+  description = "1.3 - example 리소스 제거"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
