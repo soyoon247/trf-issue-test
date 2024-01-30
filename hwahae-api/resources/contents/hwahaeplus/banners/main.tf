@@ -19,7 +19,7 @@ module "banners_resources" {
         "integration.request.querystring.testType"      = "method.request.querystring.testType"
       }
 
-      integration_type = "HTTP"
+      integration_type = var.args.integration_type.HTTP
       integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/contents/hwahaeplus/banners"
     }
   }
