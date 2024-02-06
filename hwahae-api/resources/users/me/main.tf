@@ -91,3 +91,9 @@ module "status" {
   args      = var.args
 }
 
+
+module "stats" {
+  source    = "./stats"
+  parent_id = module.me_resources.resource_id
+  args      = var.args
+}
