@@ -3,7 +3,7 @@ name: Run terraform apply (for dev environment)
 on:
   pull_request:
     branches:
-      - 'temp/**'
+      - 'dev/**'
     types: [closed]
     paths:
       - 'hwahae-api/**'
