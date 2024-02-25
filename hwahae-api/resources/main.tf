@@ -40,6 +40,12 @@ module "braze" {
   args      = var.args
 }
 
+module "commerce" {
+  source    = "./commerce"
+  parent_id = var.parent_id
+  args      = var.args
+}
+
 module "common" {
   source    = "./common"
   parent_id = var.parent_id
