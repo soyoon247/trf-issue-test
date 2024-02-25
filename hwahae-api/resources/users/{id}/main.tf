@@ -1,6 +1,6 @@
 module "id_resources" {
   source      = "app.terraform.io/hh-devops/api-gateway-modules/aws"
-  version     = "1.0.4"
+  version     = "1.0.6"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "{id}"
@@ -14,9 +14,6 @@ module "id_resources" {
       }
       method_response_map = {
         200 = {
-          response_models = {
-            "application/json; charset=utf-8" = "User"
-          }
           response_parameters = {
             "method.response.header.Access-Control-Allow-Origin" = "false"
           }

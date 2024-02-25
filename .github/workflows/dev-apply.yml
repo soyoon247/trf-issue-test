@@ -44,4 +44,4 @@ jobs:
       - name: Terraform Apply
         env:
           TF_INPUT: false
-        run: cd hwahae-api && terraform apply -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -auto-approve -refresh=false
+        run: cd hwahae-api && terraform apply -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -auto-approve

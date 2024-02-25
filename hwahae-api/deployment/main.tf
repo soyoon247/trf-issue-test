@@ -42,3 +42,12 @@ resource "aws_api_gateway_deployment" "release_1_4" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_1_5" {
+  rest_api_id = var.rest_api_id
+  description = "1.5 - Commerce Webview api gateway 통합, 모듈 버전 변경(1.0.6), models 사용 제거"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
