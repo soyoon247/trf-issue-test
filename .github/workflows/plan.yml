@@ -14,7 +14,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
     concurrency:
-      group: terraform-plan
+      group: terraform-execute
 
     steps:
     - uses: actions/checkout@v3
