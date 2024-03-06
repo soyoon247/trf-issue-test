@@ -21,7 +21,19 @@ module "comments_resources" {
         "integration.request.path.hwahaeplus_id" = "method.request.path.hwahaeplus_id"
       }
       integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/hwahaeplus/{hwahaeplus_id}/comments"
+    }
 
+    GET = {
+      authorization = var.args.authorization.CUSTOM
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      method_request_parameters = {
+        "method.request.path.hwahaeplus_id" = "true"
+      }
+      method_response_map = {}
+      integration_request_parameters = {
+        "integration.request.path.hwahaeplus_id" = "method.request.path.hwahaeplus_id"
+      }
+      integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/hwahaeplus/{hwahaeplus_id}/comments"
     }
   }
 }
