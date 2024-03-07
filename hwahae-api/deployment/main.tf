@@ -51,3 +51,12 @@ resource "aws_api_gateway_deployment" "release_1_5" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_1_6" {
+  rest_api_id = var.rest_api_id
+  description = "1.6 - SV-뷰티온 댓글 조회(GET) API 추가"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
