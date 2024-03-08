@@ -11,3 +11,9 @@ module "user_index" {
   parent_id = module.users_resources.resource_id
   args      = var.args
 }
+
+module "me" {
+  source    = "./me"
+  parent_id = module.users_resources.resource_id
+  args      = var.args
+}

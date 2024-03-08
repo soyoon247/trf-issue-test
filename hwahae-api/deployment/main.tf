@@ -60,3 +60,12 @@ resource "aws_api_gateway_deployment" "release_1_6" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_2_0" {
+  rest_api_id = var.rest_api_id
+  description = "2.0 - GET users/me/stats, GET commerce/users/me/stats 추가"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
