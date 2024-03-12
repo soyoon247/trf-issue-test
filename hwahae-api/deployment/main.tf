@@ -106,3 +106,12 @@ resource "aws_api_gateway_deployment" "release_2_4" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_2_5" {
+  rest_api_id = var.rest_api_id
+  description = "2.5 - 모든 api의 권한부여자를 hwahae_auth_authorizer로 변경"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
