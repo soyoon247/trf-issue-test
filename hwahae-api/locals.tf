@@ -59,8 +59,8 @@ locals {
     root_resource_id = data.aws_api_gateway_rest_api.hwahae_api.root_resource_id
 
     hwahae_authorizer_id_map = {
-      hwahae_authorizer      = "tv0y4v"
-      hwahae_auth_authorizer = "tv0y4v"
+      hwahae_authorizer              = "tv0y4v"
+      hwahae_authorizer_for_any_user = "fw295b"
     }
   }
 }
