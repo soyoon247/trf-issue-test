@@ -7,7 +7,6 @@ module "event_index_resources" {
 
   method_values = {
     GET = {
-
       authorization = var.args.authorization.CUSTOM
       authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
 

@@ -7,7 +7,6 @@ module "events_resources" {
 
   method_values = {
     GET = {
-
       method_request_parameters = {
         "method.request.header.Cookie"                = "false"
         "method.request.header.hwahae-app-version"    = "false"

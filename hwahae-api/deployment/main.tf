@@ -97,3 +97,12 @@ resource "aws_api_gateway_deployment" "release_2_3" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_2_4" {
+  rest_api_id = var.rest_api_id
+  description = "2.4 - cart-count api의 권한부여자를 hwahae_auth_authorizer로 변경"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
