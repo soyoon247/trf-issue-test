@@ -88,3 +88,12 @@ resource "aws_api_gateway_deployment" "release_2_2" {
   }
 }
 
+
+resource "aws_api_gateway_deployment" "release_2_3" {
+  rest_api_id = var.rest_api_id
+  description = "2.3 - awards 하위 api의 권한부여자를 hwahae_auth_authorizer로 변경 작업 수정"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}

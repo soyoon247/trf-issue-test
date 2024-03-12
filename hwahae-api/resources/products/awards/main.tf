@@ -8,7 +8,7 @@ module "awards_resources" {
   method_values = {
     GET = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_auth_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_response_map = {
         200 = {
           response_models = var.args.empty_response_models
