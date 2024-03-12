@@ -78,3 +78,13 @@ resource "aws_api_gateway_deployment" "release_2_1" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_2_2" {
+  rest_api_id = var.rest_api_id
+  description = "2.2 - users/me/stats GET authorizer 추가"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
