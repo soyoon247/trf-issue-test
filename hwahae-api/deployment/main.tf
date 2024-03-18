@@ -115,3 +115,12 @@ resource "aws_api_gateway_deployment" "release_2_5" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_3_0" {
+  rest_api_id = var.rest_api_id
+  description = "3.0 - recommendations 하위 리소스 추가"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}

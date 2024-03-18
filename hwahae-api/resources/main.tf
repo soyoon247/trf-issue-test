@@ -225,3 +225,9 @@ module "weather-check" {
   parent_id = var.parent_id
   args      = var.args
 }
+
+module "recommendations" {
+  source    = "./recommendations"
+  parent_id = var.parent_id
+  args      = var.args
+}
