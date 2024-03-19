@@ -1,7 +1,7 @@
 """
 api gateway 배포를 위해 필요한 파일 및 내용들을 자동 생성해줍니다.
 
-ex) python create_new_resource_script.py --path users/favorite/brands
+ex) python create_new_resource_script.py --path /users/favorite/brands
 
 - endpoint path에 해당하는 디렉토리에 main.tf, variables.tf를 생성합니다.
 - main.tf는 샘플 내용이 작성되어 생성됩니다. 추가하고자 하는 내용을 넣어서 사용하세요.
@@ -158,8 +158,10 @@ if __name__ == "__main__":
         description="api gateway 배포를 위해 필요한 파일 및 내용들을 자동 생성해줍니다."
     )
     parser.add_argument(
-        "--path", type=str, help="api path를 입력하세요. ex) users/favorite/brands"
+        "--path", type=str, help="api path를 입력하세요. ex) /users/favorite/brands"
     )
 
     args = parser.parse_args()
-    create_resources(args.path)
+    path = args.path
+    path = path[1:] if path.startswith("/") else path
+    create_resources(path)
