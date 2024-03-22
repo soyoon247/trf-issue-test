@@ -142,3 +142,13 @@ resource "aws_api_gateway_deployment" "release_4_1" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_4_2" {
+  rest_api_id = var.rest_api_id
+  description = "4.2 - product-goods-pair api의 authorizer 변경"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
