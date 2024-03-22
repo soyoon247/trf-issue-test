@@ -152,3 +152,11 @@ resource "aws_api_gateway_deployment" "release_4_2" {
   }
 }
 
+resource "aws_api_gateway_deployment" "release_4_3" {
+  rest_api_id = var.rest_api_id
+  description = "4.3 - products, search 하위 api의 authorizer 변경"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}

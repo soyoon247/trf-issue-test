@@ -8,7 +8,7 @@ module "reviews_resources" {
   method_values = {
     GET = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer_for_any_user
 
       method_request_parameters = {
         "method.request.header.hwahae-device-scale"   = "false"
@@ -24,6 +24,7 @@ module "reviews_resources" {
         "method.request.querystring.skinTrouble"      = "false"
         "method.request.querystring.skinType"         = "false"
         "method.request.querystring.userId"           = "false"
+        "method.request.querystring.isCheckingReview" = "false"
       }
       integration_request_parameters = {
         "integration.request.path.encrypted_product_id"      = "method.request.path.encrypted_product_id"
