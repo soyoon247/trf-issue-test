@@ -20,7 +20,7 @@ module "products_resources" {
         "integration.request.path.award_id"             = "method.request.path.award_id"
         "integration.request.querystring.category_code" = "method.request.querystring.category_code"
       }
-      integration_type = "HTTP"
+      integration_type = var.args.integration_type.HTTP
       integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/award/{award_id}/products"
     }
   }

@@ -10,5 +10,9 @@ module "signup_resources" {
       integration_uri     = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/auth/signup"
       method_response_map = {}
     }
+    OPTIONS = {
+      integration_type = var.args.integration_type.HTTP_PROXY
+      integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/auth/signup"
+    }
   }
 }

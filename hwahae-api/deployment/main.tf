@@ -124,3 +124,12 @@ resource "aws_api_gateway_deployment" "release_3_0" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_4_0" {
+  rest_api_id = var.rest_api_id
+  description = "4.0 - auth/signin, auth/signup, auth/token/refresh OPTIONS 추가"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
