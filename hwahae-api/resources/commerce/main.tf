@@ -125,3 +125,9 @@ module "orderable-goods" {
   parent_id = module.commerce_resources.resource_id
   args      = var.args
 }
+
+module "badges" {
+  source    = "./badges"
+  parent_id = module.commerce_resources.resource_id
+  args      = var.args
+}
