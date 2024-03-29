@@ -4,6 +4,18 @@ module "products_resources" {
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "products"
+
+  method_values = {
+    GET = {
+      method_response_map = {
+        200 = {
+          response_models = var.args.empty_response_models
+        }
+      }
+      integration_type = var.args.integration_type.HTTP
+      integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/products"
+    }
+  }
 }
 
 module "awards" {
