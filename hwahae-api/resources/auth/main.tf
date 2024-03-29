@@ -60,6 +60,14 @@ module "token" {
   parent_id = module.auth_resources.resource_id
   args      = var.args
 }
+
+
+module "email" {
+  source    = "./email"
+  parent_id = module.auth_resources.resource_id
+  args      = var.args
+}
+
 module "social" {
   source    = "./social"
   parent_id = module.auth_resources.resource_id
