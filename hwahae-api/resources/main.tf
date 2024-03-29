@@ -237,3 +237,9 @@ module "categories" {
   parent_id = var.parent_id
   args      = var.args
 }
+
+module "beautyon" {
+  source    = "./beautyon"
+  parent_id = var.parent_id
+  args      = var.args
+}

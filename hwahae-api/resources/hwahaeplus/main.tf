@@ -22,10 +22,3 @@ module "editors" {
   args      = var.args
 }
 
-module "hwahaeplus_id" {
-  source    = "./{hwahaeplus_id}"
-  parent_id = module.hwahaeplus_resources.resource_id
-  args      = var.args
-}
-
-
