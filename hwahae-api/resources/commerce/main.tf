@@ -119,3 +119,9 @@ module "plannings" {
   parent_id = module.commerce_resources.resource_id
   args      = var.args
 }
+
+module "orderable-goods" {
+  source    = "./orderable-goods"
+  parent_id = module.commerce_resources.resource_id
+  args      = var.args
+}
