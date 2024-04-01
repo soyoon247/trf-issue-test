@@ -231,3 +231,15 @@ module "recommendations" {
   parent_id = var.parent_id
   args      = var.args
 }
+
+module "categories" {
+  source    = "./categories"
+  parent_id = var.parent_id
+  args      = var.args
+}
+
+module "beautyon" {
+  source    = "./beautyon"
+  parent_id = var.parent_id
+  args      = var.args
+}

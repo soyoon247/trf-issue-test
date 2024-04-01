@@ -8,7 +8,7 @@ module "scrap_resources" {
     authorization = var.args.authorization.CUSTOM
     authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
     method_request_parameters = {
-      "method.request.path.hwahaeplus_id" = "true"
+      "method.request.path.review_index" = "true"
     }
     method_response_map = {
       200 = {
@@ -16,17 +16,12 @@ module "scrap_resources" {
       }
     }
     integration_request_parameters = {
-      "integration.request.path.hwahaeplus_id" = "method.request.path.hwahaeplus_id"
+      "integration.request.path.review_index" = "method.request.path.review_index"
     }
-    integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/hwahaeplus/{hwahaeplus_id}/scrap"
+    integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/reviews/{review_index}/scrap"
   }
-
   method_values = {
     DELETE = {}
-    GET    = {}
     POST   = {}
   }
 }
-
-
-

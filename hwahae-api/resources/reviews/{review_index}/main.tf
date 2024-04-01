@@ -111,8 +111,8 @@ module "report" {
   args      = var.args
 }
 
-module "scraps" {
-  source    = "./scraps"
+module "scrap" {
+  source    = "./scrap"
   parent_id = module.review_index_resources.resource_id
   args      = var.args
 }

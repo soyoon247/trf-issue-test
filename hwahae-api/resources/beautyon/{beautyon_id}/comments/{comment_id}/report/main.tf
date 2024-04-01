@@ -10,8 +10,8 @@ module "report_resources" {
       authorization = var.args.authorization.CUSTOM
       authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_request_parameters = {
-        "method.request.path.comment_id"    = "true"
-        "method.request.path.hwahaeplus_id" = "true"
+        "method.request.path.comment_id"  = "true"
+        "method.request.path.beautyon_id" = "true"
       }
       method_response_map = {
         200 = {
@@ -19,10 +19,10 @@ module "report_resources" {
         }
       }
       integration_request_parameters = {
-        "integration.request.path.comment_id"    = "method.request.path.comment_id"
-        "integration.request.path.hwahaeplus_id" = "method.request.path.hwahaeplus_id"
+        "integration.request.path.comment_id"  = "method.request.path.comment_id"
+        "integration.request.path.beautyon_id" = "method.request.path.beautyon_id"
       }
-      integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/hwahaeplus/{hwahaeplus_id}/comments/{comment_id}/report"
+      integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/beautyon/{beautyon_id}/comments/{comment_id}/report"
     }
   }
 }

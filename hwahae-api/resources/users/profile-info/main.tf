@@ -14,5 +14,9 @@ module "profile-info_resources" {
       }
       integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/users/profile-info"
     }
+    OPTIONS = {
+      integration_type = var.args.integration_type.HTTP_PROXY
+      integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/users/profile-info"
+    }
   }
 }
