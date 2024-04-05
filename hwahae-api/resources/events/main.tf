@@ -42,8 +42,9 @@ module "events_resources" {
       integration_type = var.args.integration_type.HTTP
       integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/events"
       integration_response_map = {
-        200 = { response_parameters = {
-          "method.response.header.Set-Cookie" = "integration.response.header.Set-Cookie"
+        200 = {
+          response_parameters = {
+            "method.response.header.Set-Cookie" = "integration.response.header.Set-Cookie"
           }
         }
         400 = { selection_pattern = "400" }
