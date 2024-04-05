@@ -35,3 +35,9 @@ module "partner_id" {
   parent_id = module.partner_resources.resource_id
   args      = var.args
 }
+
+module "brands" {
+  source    = "./brands"
+  parent_id = module.partner_resources.resource_id
+  args      = var.args
+}

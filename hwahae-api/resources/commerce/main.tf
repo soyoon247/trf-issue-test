@@ -131,3 +131,9 @@ module "badges" {
   parent_id = module.commerce_resources.resource_id
   args      = var.args
 }
+
+module "brand-halls" {
+  source    = "./brand-halls"
+  parent_id = module.commerce_resources.resource_id
+  args      = var.args
+}
