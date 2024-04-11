@@ -46,11 +46,15 @@ PARENT_MAIN_TEMPLATE = Template(
 """
 )
 
+PARENT_ID_TEMPLATE = Template(
+    """module.${parent_resource_name}.resource_id"""
+)
+
 VARIABLE_CONNECT_TEMPLATE = Template(
     """
 module "${module_name}" {
   source    = "./${source}"
-  parent_id = module.${parent_resource_name}.resource_id
+  parent_id = ${parent_id}
   args      = var.args
 }
 """
@@ -114,17 +118,22 @@ def add_module_in_parent_path_main_tf(
     parent_path = "/".join(current_path.split("/")[:-1])
     parent_main_tf_path = f"{parent_path}/main.tf"
     parent_current_path_part = current_path.split("/")[-2:-1][0]
-    parent_resource_name = (
-        f"{REGEX.search(parent_current_path_part)[1]}_resources"
-        if REGEX.search(parent_current_path_part)
-        else f"{parent_current_path_part}_resources"
-    )
+
+    if parent_current_path_part == "resources":
+        parent_id = "var.parent_id"
+    else:
+        parent_resource_name = (
+            f"{REGEX.search(parent_current_path_part)[1]}_resources"
+            if REGEX.search(parent_current_path_part)
+            else f"{parent_current_path_part}_resources"
+        )
+        parent_id = PARENT_ID_TEMPLATE.substitute(parent_resource_name=parent_resource_name)
     with open(parent_main_tf_path, "a") as f:
         f.write(
             VARIABLE_CONNECT_TEMPLATE.substitute(
                 module_name=module_name,
                 source=source,
-                parent_resource_name=parent_resource_name,
+                parent_id=parent_id,
             )
         )
 
