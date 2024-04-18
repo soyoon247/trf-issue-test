@@ -43,6 +43,14 @@ resource "aws_api_gateway_deployment" "release_5_0" {
   }
 }
 
+resource "aws_api_gateway_deployment" "release_6_0" {
+  rest_api_id = var.rest_api_id
+  description = "6.0 - product-goods-pair OPTIONS 변경"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
 
 
 
