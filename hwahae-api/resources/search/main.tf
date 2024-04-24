@@ -25,12 +25,6 @@ module "search_resources" {
   }
 }
 
-module "banners" {
-  source    = "./banners"
-  parent_id = module.search_resources.resource_id
-  args      = var.args
-}
-
 module "brands" {
   source    = "./brands"
   parent_id = module.search_resources.resource_id
