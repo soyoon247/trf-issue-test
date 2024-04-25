@@ -7,32 +7,12 @@ module "products_resources" {
 
   method_values = {
     GET = {
-      method_request_parameters = {
-        "method.request.querystring.brand_id"             = "false"
-        "method.request.querystring.category_id"          = "false"
-        "method.request.querystring.product_attribute_id" = "false"
-        "method.request.querystring.review_topic_id"      = "false"
-        "method.request.querystring.ordering"             = "false"
-        "method.request.querystring.offset"               = "false"
-        "method.request.querystring.limit"                = "false"
-      }
       method_response_map = {
         200 = {
           response_models = var.args.empty_response_models
         }
       }
-
-      integration_request_parameters = {
-        "integration.request.querystring.brand_id"             = "method.request.querystring.brand_id"
-        "integration.request.querystring.category_id"          = "method.request.querystring.category_id"
-        "integration.request.querystring.product_attribute_id" = "method.request.querystring.product_attribute_id"
-        "integration.request.querystring.review_topic_id"      = "method.request.querystring.review_topic_id"
-        "integration.request.querystring.ordering"             = "method.request.querystring.ordering"
-        "integration.request.querystring.offset"               = "method.request.querystring.offset"
-        "integration.request.querystring.limit"                = "method.request.querystring.limit"
-      }
-      integration_type = var.args.integration_type.HTTP
-      integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/products"
+      integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/products"
     }
     OPTIONS = {
       integration_response_map = {
