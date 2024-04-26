@@ -52,9 +52,9 @@ resource "aws_api_gateway_deployment" "release_6_0" {
   }
 }
 
-resource "aws_api_gateway_deployment" "release_7_0" {
+resource "aws_api_gateway_deployment" "release_7_1" {
   rest_api_id = var.rest_api_id
-  description = "7.0 - SV-10401, SV-9645, SV-10070, SV-10431, SV-10462, SV-10486, SV-10290"
+  description = "7.1 - SV-10401, SV-9645, SV-10070, SV-10431, SV-10462, SV-10486, SV-10290"
 
   lifecycle {
     create_before_destroy = true
