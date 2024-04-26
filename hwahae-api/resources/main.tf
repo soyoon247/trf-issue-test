@@ -243,3 +243,9 @@ module "beautyon" {
   parent_id = var.parent_id
   args      = var.args
 }
+
+module "brands" {
+  source    = "./brands"
+  parent_id = var.parent_id
+  args      = var.args
+}

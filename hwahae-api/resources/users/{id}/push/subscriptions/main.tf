@@ -109,9 +109,3 @@ module "marketing" {
   parent_id = module.subscriptions_resources.resource_id
   args      = var.args
 }
-
-module "migrate" {
-  source    = "./migrate"
-  parent_id = module.subscriptions_resources.resource_id
-  args      = var.args
-}
