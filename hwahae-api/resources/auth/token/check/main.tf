@@ -8,7 +8,7 @@ module "check_resources" {
   method_values = {
     POST = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_response_map = {
         200 = {
           response_parameters = {

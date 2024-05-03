@@ -7,7 +7,7 @@ module "subscriptions_resources" {
 
   common_values = {
     authorization       = var.args.authorization.CUSTOM
-    authorizer_id       = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+    authorizer_id       = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
     method_response_map = {}
     integration_uri     = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/makeup/pigment-images/subscriptions"
   }
