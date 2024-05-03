@@ -8,7 +8,7 @@ module "product-goods-pair_resources" {
   method_values = {
     GET = {
       authorization       = var.args.authorization.CUSTOM
-      authorizer_id       = var.args.hwahae_authorizer_id_map.hwahae_authorizer_for_any_user
+      authorizer_id       = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer_for_any_user
       method_response_map = {}
       integration_uri     = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/product-goods-pair"
     }

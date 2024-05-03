@@ -7,7 +7,7 @@ module "profile_resources" {
 
   common_values = {
     authorization = var.args.authorization.CUSTOM
-    authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+    authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
     method_request_parameters = {
       "method.request.header.hwahae-user-id" = "false"
       "method.request.path.id"               = "true"

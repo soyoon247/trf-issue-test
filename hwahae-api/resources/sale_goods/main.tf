@@ -15,7 +15,7 @@ module "sale_goods_resources" {
           }
         }
       }
-      integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/sale_goods"
+      integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/sale_goods"
       integration_response_map = {
         200 = {
           response_parameters = {

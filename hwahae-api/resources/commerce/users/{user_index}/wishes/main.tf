@@ -7,7 +7,7 @@ module "wishes_resources" {
   method_values = {
     DELETE = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_request_parameters = {
         "method.request.path.user_index" = "true"
       }
@@ -34,7 +34,7 @@ module "wishes_resources" {
 
     GET = {
       authorization         = var.args.authorization.CUSTOM
-      authorizer_id         = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id         = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_operation_name = "getWishList"
       method_request_parameters = {
         "method.request.path.user_index"    = "true"
@@ -80,7 +80,7 @@ module "wishes_resources" {
 
     POST = {
       authorization         = var.args.authorization.CUSTOM
-      authorizer_id         = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id         = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_operation_name = "addGoodsToWishList"
       method_request_parameters = {
         "method.request.path.user_index" = "true"

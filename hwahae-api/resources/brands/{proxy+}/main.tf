@@ -8,7 +8,7 @@ module "proxy_resources" {
   method_values = {
     ANY = {
       authorization   = var.args.authorization.CUSTOM
-      authorizer_id   = var.args.hwahae_authorizer_id_map.hwahae_authorizer_for_any_user
+      authorizer_id   = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer_for_any_user
       integration_uri = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/brands/{proxy}"
     }
 
