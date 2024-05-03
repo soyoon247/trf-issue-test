@@ -69,12 +69,3 @@ resource "aws_api_gateway_deployment" "release_8_0" {
     create_before_destroy = true
   }
 }
-
-resource "aws_api_gateway_deployment" "release_8_1" {
-  rest_api_id = var.rest_api_id
-  description = "8.1 - 1차 권한부여자 변경"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
