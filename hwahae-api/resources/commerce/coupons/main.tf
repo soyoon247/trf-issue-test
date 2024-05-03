@@ -8,7 +8,7 @@ module "coupons_resources" {
   method_values = {
     GET = {
       authorization         = var.args.authorization.CUSTOM
-      authorizer_id         = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id         = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_operation_name = "getCouponList"
       method_request_parameters = {
         "method.request.querystring.goods_index" = "true"

@@ -61,3 +61,11 @@ resource "aws_api_gateway_deployment" "release_7_1" {
   }
 }
 
+resource "aws_api_gateway_deployment" "release_8_0" {
+  rest_api_id = var.rest_api_id
+  description = "8.0 - 모든 api 임시 권한부여자로 변경"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
