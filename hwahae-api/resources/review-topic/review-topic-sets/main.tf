@@ -8,7 +8,7 @@ module "review-topic-sets_resources" {
   method_values = {
     GET = {
       authorization       = var.args.authorization.CUSTOM
-      authorizer_id       = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
+      authorizer_id       = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_response_map = {}
       integration_uri     = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/review-topic/review-topic-sets"
     }

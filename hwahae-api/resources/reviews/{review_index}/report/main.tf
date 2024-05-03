@@ -8,7 +8,7 @@ module "report_resources" {
   method_values = {
     POST = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_request_parameters = {
         "method.request.path.review_index" = "true"
       }
