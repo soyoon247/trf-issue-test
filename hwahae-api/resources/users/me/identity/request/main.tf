@@ -19,7 +19,7 @@ module "request_resources" {
     }
     POST = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
       method_request_parameters = {
         "method.request.header.hwahae-user-id" = "true"
       }
