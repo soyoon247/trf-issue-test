@@ -7,7 +7,7 @@ module "event-index_resources" {
 
   common_values = {
     authorization    = var.args.authorization.CUSTOM
-    authorizer_id    = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+    authorizer_id    = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
     integration_type = var.args.integration_type.HTTP
     integration_uri  = "http://$${stageVariables.HWAHAE_SERVER_API_ALB}/$${stageVariables.version}/users/{id}/applies/events/{event_index}"
   }

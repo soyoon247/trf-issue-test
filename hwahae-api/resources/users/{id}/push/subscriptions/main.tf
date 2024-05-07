@@ -8,7 +8,7 @@ module "subscriptions_resources" {
   method_values = {
     GET = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_request_parameters = {
         "method.request.path.id" = "true"
       }
@@ -67,7 +67,7 @@ module "subscriptions_resources" {
 
     POST = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_request_parameters = {
         "method.request.header.hwahae-platform" = "false"
         "method.request.path.id"                = "true"

@@ -8,7 +8,7 @@ module "info_resources" {
   method_values = {
     GET = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_response_map = {
         200 = { response_models = var.args.empty_response_models }
       }
@@ -16,7 +16,7 @@ module "info_resources" {
     }
     PATCH = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_response_map = {
         200 = {
           response_models = var.args.empty_response_models
@@ -29,7 +29,7 @@ module "info_resources" {
     }
     PUT = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_response_map = {
         200 = { response_models = var.args.empty_response_models }
       }

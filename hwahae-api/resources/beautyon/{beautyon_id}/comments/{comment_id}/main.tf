@@ -8,7 +8,7 @@ module "comment_id_resources" {
   method_values = {
     DELETE = {
       authorization = var.args.authorization.CUSTOM
-      authorizer_id = var.args.hwahae_authorizer_id_map.hwahae_authorizer
+      authorizer_id = var.args.hwahae_authorizer_id_map.temp_hwahae_authorizer
       method_request_parameters = {
         "method.request.path.comment_id"  = "true"
         "method.request.path.beautyon_id" = "true"
