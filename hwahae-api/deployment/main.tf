@@ -96,3 +96,12 @@ resource "aws_api_gateway_deployment" "release_8_6" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_9_0" {
+  rest_api_id = var.rest_api_id
+  description = "9.0 - SV-10208, SV-10220, SV-10430, SV-10252"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
