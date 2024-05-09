@@ -119,3 +119,21 @@ module "plannings" {
   parent_id = module.commerce_resources.resource_id
   args      = var.args
 }
+
+module "orderable-goods" {
+  source    = "./orderable-goods"
+  parent_id = module.commerce_resources.resource_id
+  args      = var.args
+}
+
+module "badges" {
+  source    = "./badges"
+  parent_id = module.commerce_resources.resource_id
+  args      = var.args
+}
+
+module "brand-halls" {
+  source    = "./brand-halls"
+  parent_id = module.commerce_resources.resource_id
+  args      = var.args
+}
