@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "sy_trf_test"
 
     workspaces {
@@ -10,7 +10,7 @@ terraform {
 
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 }
@@ -19,7 +19,10 @@ provider "aws" {
   region     = "ap-northeast-2"
   access_key = var.AWS_ACCESS_KEY_ID
   secret_key = var.AWS_SECRET_ACCESS_KEY
+  token      = var.AWS_SESSION_TOKEN
 }
+
+
 
 
 # aws_api_gateway_resource 이하 리소스 추가
