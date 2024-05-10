@@ -13,6 +13,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
       TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
     concurrency:
       group: terraform-execute
@@ -40,7 +41,7 @@ jobs:
     - name: Terraform Plan
       id: plan
       run: |
-        PLAN=$(cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -no-color -refresh=false)
+        PLAN=$(cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -var AWS_SESSION_TOKEN=${{env.AWS_SESSION_TOKEN}} -no-color -refresh=false)
 
         regex='Terraform will perform the following actions:(.*)'
         if [[ $PLAN =~ $regex ]]; then

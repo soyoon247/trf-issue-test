@@ -14,6 +14,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
       TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
     concurrency:
       group: terraform-execute
@@ -41,6 +42,6 @@ jobs:
         run: cd hwahae-api && terraform validate -no-color
 
       - name: Terraform Apply
-        run: cd hwahae-api && terraform apply -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -auto-approve
+        run: cd hwahae-api && terraform apply -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -var AWS_SESSION_TOKEN=${{env.AWS_SESSION_TOKEN}} -auto-approve
         env:
           TF_INPUT: false
