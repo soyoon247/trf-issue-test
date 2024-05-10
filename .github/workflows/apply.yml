@@ -28,6 +28,7 @@ jobs:
           cli_config_credentials_token: ${{ env.TF_TOKEN }}
           terraform_version: "1.5.7"
 
+
       - name: Terraform fmt
         id: fmt
         run: cd hwahae-api && terraform fmt -check

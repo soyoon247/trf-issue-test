@@ -23,6 +23,8 @@ provider "aws" {
 }
 
 
+
+
 # aws_api_gateway_resource 이하 리소스 추가
 module "hwahae-rest-api-resources" {
   source     = "./resources"
