@@ -41,6 +41,14 @@ module "sale_goods_resources" {
 #        "integration.request.querystring.product_attribute_id"   = "method.request.querystring.product_attribute_id"
 #      }
 #      integration_type = var.args.integration_type.HTTP
+#      integration_response_map = {
+#        200 = {
+#          response_parameters = {
+#            "method.response.header.Access-Control-Allow-Origin" = var.args.all_origin
+#            "method.response.header.Set-Cookie"                  = "integration.response.header.Set-Cookie"
+#          }
+#        }
+#      }
       ##############################################
       method_response_map = {
         200 = {
@@ -51,15 +59,7 @@ module "sale_goods_resources" {
         }
       }
       integration_uri = "http://naver.com"
-      integration_response_map = {
-        200 = {
-          response_parameters = {
-            "method.response.header.Access-Control-Allow-Origin" = var.args.all_origin
-            "method.response.header.Set-Cookie"                  = "integration.response.header.Set-Cookie"
-          }
 
-        }
-      }
 
     }
     OPTIONS = {
