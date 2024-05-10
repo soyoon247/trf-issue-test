@@ -2,9 +2,8 @@ name: Run terraform plan
 
 on:
   pull_request:
-    paths:
-      - 'hwahae-api/**'
-      - '.github/**'
+    branches:
+      - main
 
 jobs:
   terraform-plan:
