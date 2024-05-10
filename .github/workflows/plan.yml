@@ -1,42 +1,42 @@
-name: Run terraform plan
-
-on:
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  terraform-plan:
-    runs-on: ubuntu-latest
-    environment: terraform_plan_apply
-    env:
-      AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-      TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-    concurrency:
-      group: terraform-execute
-
-    steps:
-    - uses: actions/checkout@v3
-    - uses: hashicorp/setup-terraform@v3
-      with:
-        cli_config_credentials_hostname: "app.terraform.io"
-        cli_config_credentials_token: ${{ env.TF_TOKEN }}
-        terraform_version: "1.8.3"
-
-    - name: Terraform fmt
-      id: fmt
-      run: cd hwahae-api && terraform fmt -check
-
-    - name: Terraform Init
-      id: init
-      run: cd hwahae-api && terraform init
-
-    - name: Terraform Validate
-      id: validate
-      run: cd hwahae-api && terraform validate -no-color
-
-    - name: Terraform Plan
-      id: plan
-      run: cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -var AWS_SESSION_TOKEN=${{env.AWS_SESSION_TOKEN}} -no-color -refresh=false
+#name: Run terraform plan
+#
+#on:
+#  pull_request:
+#    branches:
+#      - main
+#
+#jobs:
+#  terraform-plan:
+#    runs-on: ubuntu-latest
+#    environment: terraform_plan_apply
+#    env:
+#      AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+#      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+#      TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
+#    concurrency:
+#      group: terraform-execute
+#
+#    steps:
+#    - uses: actions/checkout@v3
+#    - uses: hashicorp/setup-terraform@v3
+#      with:
+#        cli_config_credentials_hostname: "app.terraform.io"
+#        cli_config_credentials_token: ${{ env.TF_TOKEN }}
+#        terraform_version: "1.8.3"
+#
+#    - name: Terraform fmt
+#      id: fmt
+#      run: cd hwahae-api && terraform fmt -check
+#
+#    - name: Terraform Init
+#      id: init
+#      run: cd hwahae-api && terraform init
+#
+#    - name: Terraform Validate
+#      id: validate
+#      run: cd hwahae-api && terraform validate -no-color
+#
+#    - name: Terraform Plan
+#      id: plan
+#      run: cd hwahae-api && terraform plan -var AWS_ACCESS_KEY_ID=${{env.AWS_ACCESS_KEY_ID}} -var AWS_SECRET_ACCESS_KEY=${{env.AWS_SECRET_ACCESS_KEY}} -var AWS_SESSION_TOKEN=${{env.AWS_SESSION_TOKEN}} -no-color -refresh=false
