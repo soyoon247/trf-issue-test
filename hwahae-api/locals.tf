@@ -1,6 +1,6 @@
 # 콘솔에서 생성한 리소스 정보를 가져오는 data 리소스 추가
 data "aws_api_gateway_rest_api" "hwahae_api" {
-  name = "Hwahae API"
+  name = "terraform-test-sy"
 }
 
 # api 생성 시 필요한 인자를 넘겨주는 locals 추가

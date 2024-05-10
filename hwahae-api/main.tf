@@ -1,16 +1,16 @@
 terraform {
   backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "hh-devops"
+    hostname = "app.terraform.io"
+    organization = "sy_trf_test"
 
     workspaces {
-      name = "hh-api-gateway"
+      name = "trf-issue-test"
     }
   }
 
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
     }
   }
 }

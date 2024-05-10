@@ -7,6 +7,22 @@ module "sale_goods_resources" {
 
   method_values = {
     GET = {
+      method_request_parameters = {
+        "method.request.header.Cookie"                      = "false"
+        "method.request.header.hwahae-user-id"              = "false"
+        "method.request.querystring.category_code"          = "false"
+        "method.request.querystring.current_item_count"     = "false"
+        "method.request.querystring.is_discounted"          = "false"
+        "method.request.querystring.is_limited_price_badge" = "false"
+        "method.request.querystring.is_only_hwahae"         = "false"
+        "method.request.querystring.is_soldout"             = "false"
+        "method.request.querystring.is_square_image"        = "false"
+        "method.request.querystring.limit"                  = "false"
+        "method.request.querystring.partner_index"          = "false"
+        "method.request.querystring.product_index"          = "false"
+        "method.request.querystring.sort"                   = "false"
+        "method.request.querystring.product_attribute_id"   = "false"
+      }
       method_response_map = {
         200 = {
           response_parameters = {
@@ -25,6 +41,23 @@ module "sale_goods_resources" {
 
         }
       }
+      integration_request_parameters = {
+        "integration.request.header.Cookie"                      = "method.request.header.Cookie"
+        "integration.request.header.hwahae-user-id"              = "method.request.header.hwahae-user-id"
+        "integration.request.querystring.category_code"          = "method.request.querystring.category_code"
+        "integration.request.querystring.current_item_count"     = "method.request.querystring.current_item_count"
+        "integration.request.querystring.is_discounted"          = "method.request.querystring.is_discounted"
+        "integration.request.querystring.is_limited_price_badge" = "method.request.querystring.is_limited_price_badge"
+        "integration.request.querystring.is_only_hwahae"         = "method.request.querystring.is_only_hwahae"
+        "integration.request.querystring.is_soldout"             = "method.request.querystring.is_soldout"
+        "integration.request.querystring.is_square_image"        = "method.request.querystring.is_square_image"
+        "integration.request.querystring.limit"                  = "method.request.querystring.limit"
+        "integration.request.querystring.partner_index"          = "method.request.querystring.partner_index"
+        "integration.request.querystring.product_index"          = "method.request.querystring.product_index"
+        "integration.request.querystring.sort"                   = "method.request.querystring.sort"
+        "integration.request.querystring.product_attribute_id"   = "method.request.querystring.product_attribute_id"
+      }
+      integration_type = var.args.integration_type.HTTP
     }
     OPTIONS = {
       method_response_map = {
@@ -44,11 +77,4 @@ module "sale_goods_resources" {
     }
   }
 }
-
-module "categories" {
-  source    = "./categories"
-  parent_id = module.sale_goods_resources.resource_id
-  args      = var.args
-}
-
 
