@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "sy_trf_test"
 
     workspaces {
@@ -10,7 +10,7 @@ terraform {
 
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 }
