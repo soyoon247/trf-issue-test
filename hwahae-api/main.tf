@@ -58,13 +58,12 @@ resource "aws_api_gateway_integration" "example" {
   rest_api_id             = data.aws_api_gateway_rest_api.hwahae_api.id
   resource_id             = aws_api_gateway_resource.example.id
   http_method             = aws_api_gateway_method.example.http_method
-  type                    = "HTTP_PROXY"
+  type                    = "HTTP"
   integration_http_method = "ANY"
   uri                     = "http://example.com/endpoint"
   passthrough_behavior    = "WHEN_NO_MATCH"
 
   depends_on = [
-    data.aws_api_gateway_rest_api.hwahae_api,
     aws_api_gateway_resource.example,
     aws_api_gateway_method.example
   ]
