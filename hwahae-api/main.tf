@@ -49,7 +49,7 @@ resource "aws_api_gateway_resource" "example" {
 
 resource "aws_api_gateway_method" "example" {
   rest_api_id   = data.aws_api_gateway_rest_api.hwahae_api.id
-  resource_id   = data.aws_api_gateway_rest_api.hwahae_api.id
+  resource_id   = aws_api_gateway_resource.example.id
   http_method   = "ANY"
   authorization = "NONE"
 }
