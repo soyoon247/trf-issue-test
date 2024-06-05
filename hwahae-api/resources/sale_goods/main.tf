@@ -1,6 +1,6 @@
 module "sale_goods_resources" {
   source      = "app.terraform.io/sy_trf_test/api-gateway-modules-test/aws"
-  version     = "1.0.1"
+  version     = "1.0.10"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "sale_goods"
@@ -40,7 +40,7 @@ module "sale_goods_resources" {
         "integration.request.querystring.sort"                   = "method.request.querystring.sort"
         "integration.request.querystring.product_attribute_id"   = "method.request.querystring.product_attribute_id"
       }
-      integration_type = var.args.integration_type.HTTP
+      integration_type = var.args.integration_type.HTTP_PROXY
       integration_response_map = {
         200 = {
           response_parameters = {
@@ -62,22 +62,22 @@ module "sale_goods_resources" {
 
 
     }
-    OPTIONS = {
-      method_response_map = {
-        200 = {
-          response_parameters = var.args.option_method_response_parameters
-        }
-      }
-      integration_response_map = {
-        200 = {
-          response_parameters = {
-            "method.response.header.Access-Control-Allow-Headers" = "'Origin, Authorization, Content-Type, Content-Range, Content-Disposition, Content-Description, X-Requested-With, X-ACCESS_TOKEN, X-Amz-Date, X-Api-Key, X-Amz-Security-Token, Hwahae-User-Id, Hwahae-App-Version, Hwahae-Device-Scale, Hwahae-Timestamp, Hwahae-Platform, Hwahae-Signature, Hwahae-Device-Id'"
-            "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS'"
-            "method.response.header.Access-Control-Allow-Origin"  = var.args.all_origin
-          }
-        }
-      }
-    }
+#    OPTIONS = {
+#      method_response_map = {
+#        200 = {
+#          response_parameters = var.args.option_method_response_parameters
+#        }
+#      }
+#      integration_response_map = {
+#        200 = {
+#          response_parameters = {
+#            "method.response.header.Access-Control-Allow-Headers" = "'Origin, Authorization, Content-Type, Content-Range, Content-Disposition, Content-Description, X-Requested-With, X-ACCESS_TOKEN, X-Amz-Date, X-Api-Key, X-Amz-Security-Token, Hwahae-User-Id, Hwahae-App-Version, Hwahae-Device-Scale, Hwahae-Timestamp, Hwahae-Platform, Hwahae-Signature, Hwahae-Device-Id'"
+#            "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS'"
+#            "method.response.header.Access-Control-Allow-Origin"  = var.args.all_origin
+#          }
+#        }
+#      }
+#    }
   }
 }
 
