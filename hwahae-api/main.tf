@@ -37,11 +37,11 @@ module "hwahae-rest-api-resources" {
 module "deployment" {
   source      = "./deployment"
   rest_api_id = data.aws_api_gateway_rest_api.hwahae_api.id
-  depends_on  = [module.hwahae-rest-api-resources, aws_api_gateway_resource.example]
+  depends_on  = [module.hwahae-rest-api-resources, aws_api_gateway_resource.example_2]
 }
 
 
-resource "aws_api_gateway_resource" "example" {
+resource "aws_api_gateway_resource" "example_2" {
   rest_api_id = data.aws_api_gateway_rest_api.hwahae_api.id
   parent_id   = data.aws_api_gateway_rest_api.hwahae_api.root_resource_id
   path_part   = "example"
