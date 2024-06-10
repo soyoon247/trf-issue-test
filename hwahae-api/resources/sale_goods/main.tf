@@ -40,7 +40,7 @@ module "sale_goods_resources" {
         "integration.request.querystring.sort"                   = "method.request.querystring.sort"
         "integration.request.querystring.product_attribute_id"   = "method.request.querystring.product_attribute_id"
       }
-      integration_type = var.args.integration_type.HTTP_PROXY
+      integration_type = var.args.integration_type.HTTP
       integration_response_map = {
         200 = {
           response_parameters = {
