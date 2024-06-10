@@ -52,9 +52,9 @@ resource "aws_api_gateway_method" "example" {
   resource_id   = aws_api_gateway_resource.example.id
   http_method   = "GET"
   authorization = "NONE"
-#  request_parameters = {
-#    "method.request.path.proxy" = true
-#  }
+  request_parameters = {
+    "method.request.path.proxy" = true
+  }
 
 
 }
@@ -65,11 +65,11 @@ resource "aws_api_gateway_integration" "example" {
   resource_id             = aws_api_gateway_resource.example.id
   cache_namespace         = aws_api_gateway_resource.example.id
   http_method             = aws_api_gateway_method.example.http_method
-  type                    = "HTTP"
+  type                    = "HTTP_PROXY"
   integration_http_method = "GET"
   uri                     = "http://example.com/endpoint"
   passthrough_behavior    = "WHEN_NO_MATCH"
-#  request_parameters      = { "integration.request.path.proxy" = "method.request.path.proxy" }
+  request_parameters      = { "integration.request.path.proxy" = "method.request.path.proxy" }
 
   depends_on = [
     #    aws_api_gateway_resource.example,
