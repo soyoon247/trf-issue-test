@@ -13,7 +13,6 @@ jobs:
       TF_TOKEN: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
     concurrency:
       group: terraform-execute
-    if: github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v3
 
