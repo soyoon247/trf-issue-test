@@ -41,30 +41,30 @@ module "deployment" {
 }
 
 
-#resource "aws_api_gateway_resource" "example" {
-#  rest_api_id = data.aws_api_gateway_rest_api.hwahae_api.id
-#  parent_id   = data.aws_api_gateway_rest_api.hwahae_api.root_resource_id
-#  path_part   = "example"
-#}
-#
-#resource "aws_api_gateway_method" "example" {
-#  rest_api_id   = data.aws_api_gateway_rest_api.hwahae_api.id
-#  resource_id   = aws_api_gateway_resource.example.id
-#  http_method   = "ANY"
-#  authorization = "NONE"
-#}
-#
-#resource "aws_api_gateway_integration" "example" {
-#  rest_api_id             = data.aws_api_gateway_rest_api.hwahae_api.id
-#  resource_id             = aws_api_gateway_resource.example.id
-#  http_method             = aws_api_gateway_method.example.http_method
-#  type                    = "HTTP_PROXY"
-#  integration_http_method = "ANY"
-#  uri                     = "http://example.com/endpoint"
-#  passthrough_behavior    = "WHEN_NO_MATCH"
-#
-#  depends_on = [
+resource "aws_api_gateway_resource" "example" {
+  rest_api_id = data.aws_api_gateway_rest_api.hwahae_api.id
+  parent_id   = data.aws_api_gateway_rest_api.hwahae_api.root_resource_id
+  path_part   = "example"
+}
+
+resource "aws_api_gateway_method" "example" {
+  rest_api_id   = data.aws_api_gateway_rest_api.hwahae_api.id
+  resource_id   = aws_api_gateway_resource.example.id
+  http_method   = "ANY"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "example" {
+  rest_api_id             = data.aws_api_gateway_rest_api.hwahae_api.id
+  resource_id             = aws_api_gateway_resource.example.id
+  http_method             = aws_api_gateway_method.example.http_method
+  type                    = "HTTP_PROXY"
+  integration_http_method = "ANY"
+  uri                     = "http://example.com/endpoint"
+  passthrough_behavior    = "WHEN_NO_MATCH"
+
+  depends_on = [
 #    aws_api_gateway_resource.example,
-#    aws_api_gateway_method.example
-#  ]
-#}
+    aws_api_gateway_method.example
+  ]
+}
