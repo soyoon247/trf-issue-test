@@ -50,7 +50,7 @@ resource "aws_api_gateway_resource" "example" {
 resource "aws_api_gateway_method" "example" {
   rest_api_id   = data.aws_api_gateway_rest_api.hwahae_api.id
   resource_id   = aws_api_gateway_resource.example.id
-  http_method   = "ANY"
+  http_method   = "GET"
   authorization = "NONE"
 }
 
@@ -58,13 +58,13 @@ resource "aws_api_gateway_integration" "example" {
   rest_api_id             = data.aws_api_gateway_rest_api.hwahae_api.id
   resource_id             = aws_api_gateway_resource.example.id
   http_method             = aws_api_gateway_method.example.http_method
-  type                    = "HTTP"
-  integration_http_method = "ANY"
+  type                    = "HTTP_PROXY"
+  integration_http_method = "GET"
   uri                     = "http://example.com/endpoint"
   passthrough_behavior    = "WHEN_NO_MATCH"
 
   depends_on = [
-#    aws_api_gateway_resource.example,
+    #    aws_api_gateway_resource.example,
     aws_api_gateway_method.example
   ]
 }
