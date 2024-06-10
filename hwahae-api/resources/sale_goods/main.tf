@@ -1,6 +1,6 @@
 module "sale_goods_resources" {
   source      = "app.terraform.io/sy_trf_test/api-gateway-modules-test/aws"
-  version     = "1.0.11"
+  version     = "1.0.12"
   rest_api_id = var.args.rest_api_id
   parent_id   = var.parent_id
   path_part   = "sale_goods"
