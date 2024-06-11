@@ -8,12 +8,12 @@ resource "aws_api_gateway_deployment" "release_test" {
 }
 
 
-resource "aws_api_gateway_deployment" "release_test_3" {
+resource "aws_api_gateway_deployment" "release_test_4" {
   rest_api_id = var.rest_api_id
-  description = "test 3"
+  description = "test 4"
 
   triggers = {
-    redeployment = 2
+    redeployment = 1
   }
 
   lifecycle {
