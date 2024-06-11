@@ -13,7 +13,7 @@ resource "aws_api_gateway_deployment" "release_test_4" {
   description = "test 4"
 
   triggers = {
-    redeployment = 1
+    redeployment = 4
   }
 
   lifecycle {

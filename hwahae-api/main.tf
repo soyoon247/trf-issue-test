@@ -67,7 +67,7 @@ resource "aws_api_gateway_integration" "example" {
   http_method             = aws_api_gateway_method.example.http_method
   type                    = "HTTP_PROXY"
   integration_http_method = "GET"
-  uri                     = "https://jsonplaceholder.typicode.com/posts/3"
+  uri                     = "https://jsonplaceholder.typicode.com/posts/4"
   passthrough_behavior    = "WHEN_NO_MATCH"
 #  request_parameters      = { "integration.request.path.proxy" = "method.request.path.proxy" }
 
