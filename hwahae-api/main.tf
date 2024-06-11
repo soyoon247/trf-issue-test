@@ -37,7 +37,7 @@ module "hwahae-rest-api-resources" {
 module "deployment" {
   source      = "./deployment"
   rest_api_id = data.aws_api_gateway_rest_api.hwahae_api.id
-#  depends_on  = [module.hwahae-rest-api-resources]
+  depends_on  = [module.hwahae-rest-api-resources, aws_api_gateway_integration.example]
 }
 
 
@@ -67,7 +67,7 @@ resource "aws_api_gateway_integration" "example" {
   http_method             = aws_api_gateway_method.example.http_method
   type                    = "HTTP_PROXY"
   integration_http_method = "GET"
-  uri                     = "https://jsonplaceholder.typicode.com/posts/5"
+  uri                     = "https://jsonplaceholder.typicode.com/posts/6"
   passthrough_behavior    = "WHEN_NO_MATCH"
 #  request_parameters      = { "integration.request.path.proxy" = "method.request.path.proxy" }
 

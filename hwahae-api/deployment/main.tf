@@ -20,3 +20,8 @@ resource "aws_api_gateway_deployment" "release_test_4" {
     create_before_destroy = true
   }
 }
+
+resource "aws_api_gateway_deployment" "release_test_6" {
+  rest_api_id = var.rest_api_id
+  description = "test 6"
+}
