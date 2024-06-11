@@ -13,10 +13,10 @@ resource "aws_api_gateway_deployment" "release_test_3" {
   description = "test 3"
 
   triggers = {
-    redeployment = 1
+    redeployment = 2
   }
-#
-#  lifecycle {
-#    create_before_destroy = true
-#  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
