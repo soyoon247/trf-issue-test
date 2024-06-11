@@ -28,7 +28,7 @@ resource "aws_api_gateway_deployment" "release_test_6" {
 
 resource "aws_api_gateway_deployment" "release_test_8" {
   rest_api_id = var.rest_api_id
-  description = "test 9"
+  description = "test 10"
 
   triggers = {
     redeployment = 2
